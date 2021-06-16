@@ -9,11 +9,29 @@ import UIKit
 
 class GameViewController: UIViewController {
     
-    var record: GameSession?
+    var record = GameSession(correctQuestionsCount: 0)
     var currentQuestionNum = 0
-    var questions = Question.items
+    var questions = Game.shared.questions
     
     var delegate: GameViewControllerDelegate?
+    
+    var sequence: Sequence = .sequential
+    
+    var createSequenceStrategy: CreateSequenceStrategy {
+        switch self.sequence {
+        case .sequential:
+            return SequentialQuestionsCreateStrategy()
+        case .random:
+            return RandomQuestionsCreateStrategy()
+        }
+    }
+    
+    var resultLabel: UILabel = {
+        let label = UILabel()
+        label.numberOfLines = 0
+        label.textAlignment = .left
+        return label
+    }()
     
     var questionLabel: UILabel = {
         var label = UILabel()
@@ -58,17 +76,29 @@ class GameViewController: UIViewController {
     private func setupView() {
         view.backgroundColor = #colorLiteral(red: 0.006833140738, green: 0.5212125182, blue: 0.9764973521, alpha: 1)
         
+        record.correctQuestionsCount.addObserver(self, options: [.new, .initial], closure: { [weak self] count, _ in
+            
+            self?.resultLabel.text = "Номер вопроса: \(count)"
+        })
+        
         setupLabelConstraints()
         setupButtonsConstraints()
     }
     
     private func setupLabelConstraints() {
+        view.addSubview(resultLabel)
         view.addSubview(questionLabel)
         
+        resultLabel.translatesAutoresizingMaskIntoConstraints = false
         questionLabel.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            questionLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 50),
+            resultLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
+            resultLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20)
+        ])
+        
+        NSLayoutConstraint.activate([
+            questionLabel.topAnchor.constraint(equalTo: resultLabel.bottomAnchor, constant: 30),
             questionLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             questionLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             questionLabel.heightAnchor.constraint(equalToConstant: 200)
@@ -96,7 +126,7 @@ class GameViewController: UIViewController {
         mainStackView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            mainStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -50),
+            mainStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
             mainStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             mainStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20)
         ])
@@ -112,7 +142,7 @@ class GameViewController: UIViewController {
     }
     
     private func startGame() {
-        let session = GameSession(correctQuestionsCount: 0, totalPrize: 0, questions: questions)
+        let session = GameSession(correctQuestionsCount: 0, totalPrize: 0, createSequenceStrategy: createSequenceStrategy)
         session.gameDelegate = self
         
         Game.shared.currentSession = session
@@ -125,6 +155,7 @@ class GameViewController: UIViewController {
         
         if (Game.shared.currentSession?.checkIfAnswerIsCorrect(answer: userAnswer))! && currentQuestionNum < questions.count {
             currentQuestionNum += 1
+            record.increaseCorrectQuestionsCount()
             sender.backgroundColor = .green
             
             let vc = CustomAlertViewController()
@@ -140,8 +171,8 @@ class GameViewController: UIViewController {
                     sender.backgroundColor = .white
                 } else {
                     self.record = GameSession(correctQuestionsCount: self.currentQuestionNum)
-                    Game.shared.addRecord(self.record!)
-                    self.delegate?.showRecord(record: self.record!)
+                    Game.shared.addRecord(self.record)
+                    self.delegate?.showRecord(record: self.record)
                     self.navigationController?.popViewController(animated: true)
                 }
             }

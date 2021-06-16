@@ -11,21 +11,25 @@ class GameSession: Codable {
     
     var questions: [Question?] = []
     var totalQuestionsCount = 0
-    var correctQuestionsCount = 0
+    var correctQuestionsCount = Observable<Int>(0)
     var totalPrize = 0
     var currentQuestion: Question?
+    var correctQuestionPercent = 0
+    
+    private var createSequenceStrategy: CreateSequenceStrategy?
     
     weak var gameDelegate: GameSessionDelegate?
     
-    init(correctQuestionsCount: Int, totalPrize: Int, questions: [Question]) {
-        self.questions = questions
-        self.correctQuestionsCount = correctQuestionsCount
+    init(correctQuestionsCount: Int, totalPrize: Int, createSequenceStrategy: CreateSequenceStrategy) {
+        self.questions = createSequenceStrategy.createSequense()
+        self.correctQuestionsCount.value = correctQuestionsCount
         self.totalPrize = totalPrize
         self.totalQuestionsCount = questions.count
+        self.createSequenceStrategy = createSequenceStrategy
     }
     
     init(correctQuestionsCount: Int) {
-        self.correctQuestionsCount = correctQuestionsCount
+        self.correctQuestionsCount.value = correctQuestionsCount
         self.totalPrize = correctQuestionsCount * 100
     }
     
@@ -37,7 +41,7 @@ class GameSession: Codable {
     }
     
     func increaseCorrectQuestionsCount() {
-        correctQuestionsCount += 1
+        correctQuestionsCount.value += 1
     }
     
     func checkIfAnswerIsCorrect(answer: String) -> Bool {

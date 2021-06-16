@@ -7,15 +7,79 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "8AADF8E7-23A9-4F45-9166-9A03E57F4EC2"
+            uuid = "3854E29A-FB93-4C22-B553-F8F6999C99C3"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GameProject/Controllers/GameViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "142"
-            endingLineNumber = "142"
+            startingLineNumber = "79"
+            endingLineNumber = "79"
+            landmarkName = "setupView()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "3854E29A-FB93-4C22-B553-F8F6999C99C3 - 603670d576417ae3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GameProject.GameViewController.setupView() -&gt; ()"
+                  moduleName = "GameProject"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/karahanyanlevon/Desktop/Tigran&apos;s%20files/geekBrains/swift_homework/swift.homework3/GameProject/GameProject/Controllers/GameViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "79"
+                  endingLineNumber = "79"
+                  offsetFromSymbolStart = "347">
+               </Location>
+               <Location
+                  uuid = "3854E29A-FB93-4C22-B553-F8F6999C99C3 - c11e0444c9bc61df"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Int, GameProject.ObservableOptions) -&gt; () in GameProject.GameViewController.setupView() -&gt; ()"
+                  moduleName = "GameProject"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/karahanyanlevon/Desktop/Tigran&apos;s%20files/geekBrains/swift_homework/swift.homework3/GameProject/GameProject/Controllers/GameViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "79"
+                  endingLineNumber = "79"
+                  offsetFromSymbolStart = "112">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "CB66D13F-31A0-4334-B04A-487BE67E507A"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GameProject/Model/GameSession.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "44"
+            endingLineNumber = "44"
+            landmarkName = "increaseCorrectQuestionsCount()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6DBDD6FA-759C-4DCF-B32B-207A6E348010"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GameProject/Controllers/GameViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "158"
+            endingLineNumber = "158"
             landmarkName = "answerButtonTapped(sender:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -23,32 +87,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "B2A29155-A791-4E59-BE63-B4891D0D6B5C"
-            shouldBeEnabled = "Yes"
+            uuid = "74254049-BD13-4DED-9479-D9BFAC3DF9A9"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "GameProject/Model/Game.swift"
+            filePath = "GameProject/Controllers/GameViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "24"
-            endingLineNumber = "24"
-            landmarkName = "addRecord(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "F1E03157-4DD0-4F77-A305-453FF174A809"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "GameProject/Model/RecordsCaretaker.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "21"
-            endingLineNumber = "21"
-            landmarkName = "save(records:)"
+            startingLineNumber = "81"
+            endingLineNumber = "81"
+            landmarkName = "setupView()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

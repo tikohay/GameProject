@@ -12,7 +12,7 @@ struct Question: Codable {
     let answers: [String]
     let correctAnswer: String
     
-    static let items: [Question] = [
+    static var items: [Question] = [
         Question(question: "Провожают, как известно, по уму, а как встречают?",
                 answers: ["по одёжке", "по сберкнижке", "по прописке", "по рекомендации"],
                 correctAnswer: "по одёжке"),
