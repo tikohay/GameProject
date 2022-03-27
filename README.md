@@ -1,4 +1,4 @@
-# GameProject
+# In this application you have to answer questions like in the program "Who wants to be a millionaire"
 
 <img width="537" alt="Снимок экрана 2022-03-27 в 18 13 14" src="https://user-images.githubusercontent.com/74830450/160285743-f1c70897-f3f6-4a95-a809-68010be9232f.png">
 
